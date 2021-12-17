@@ -23,12 +23,12 @@ namespace DCCollectorLoader
             ab = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(typeof(DCCollectorLoader).Assembly.Location)
                 , "dccollector"));
             dc_scene = ab.LoadAsset<GameObject>("HKCollectorScene");
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+            UnityEngine.SceneManagement.SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
         }
 
-        private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode _)
+        private void SceneManager_activeSceneChanged(UnityEngine.SceneManagement.Scene arg0, UnityEngine.SceneManagement.Scene arg1)
         {
-            if (arg0.name.StartsWith("GG_Collector"))
+            if (arg1.name.StartsWith("GG_Collector"))
             {
                 new GameObject().AddComponent<CollectorFinder>();
                 var w = UnityEngine.Object.Instantiate(dc_scene);
