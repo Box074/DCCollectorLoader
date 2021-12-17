@@ -14,6 +14,10 @@ namespace DCCollectorLoader
     {
         public static AssetBundle ab = null;
         public static GameObject dc_scene = null;
+        public override string GetVersion()
+        {
+            return "1.0.0";
+        }
         public override void Initialize()
         {
             ab = AssetBundle.LoadFromFile(Path.Combine(Path.GetDirectoryName(typeof(DCCollectorLoader).Assembly.Location)
