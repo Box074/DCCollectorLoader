@@ -54,7 +54,7 @@ namespace DCCollectorLoader
                 {
                     Destroy(v.gameObject);
                 }
-                if (v.transform.gameObject.GetComponent<CollectorControl>())
+                if (v.transform.root.gameObject.GetComponent<CollectorControl>())
                 {
                     if (v.isDead && v.enabled)
                     {
